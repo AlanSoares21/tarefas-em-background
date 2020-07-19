@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/server",
-    "queue": "nodemon src/queue"
+    "start": "nodemon src/server --ignore dbFake",
+    "queue": "nodemon src/queue --ignore dbFake"
   },
   "keywords": [],
   "author": "",

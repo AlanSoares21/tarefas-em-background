@@ -39,13 +39,14 @@ export default {
         if(!user){
             return {"Erro:":"Id invalido "+id};
         }
+        const userUpdated = {...user,...dataUser};
         saveData( getData()
             .map(data => {
-                if(parseInt(data.id)===parseInt(user.id))return {...data,...dataUser};
+                if(parseInt(data.id)===parseInt(user.id))return userUpdated;
                 return data;
             })
         );
-        return {"response":"updated"};
+        return userUpdated;
     },
     async deleteUser(id){
         const user = await this.getUser(id);
