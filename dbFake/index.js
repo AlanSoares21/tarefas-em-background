@@ -28,12 +28,31 @@ export default {
         return user;
     },
     async getUser(id){
-
+        const users = getData();
+        // console.log(users)
+        const  [user]  = users.filter( (userData) => parseInt(userData.id) === parseInt(id));
+        // console.log(user,"getUser",id);
+        return user;
     },
-    async updateUser(dataUser){
-
+    async updateUser(dataUser,id){
+        const user = await this.getUser(id);
+        if(!user){
+            return {"Erro:":"Id invalido "+id};
+        }
+        saveData( getData()
+            .map(data => {
+                if(parseInt(data.id)===parseInt(user.id))return {...data,...dataUser};
+                return data;
+            })
+        );
+        return {"response":"updated"};
     },
-    async deleteUser(dataUser){
-
+    async deleteUser(id){
+        const user = await this.getUser(id);
+        if(!user){
+            return false;
+        }
+        saveData( getData().filter(data => parseInt(data.id)!==parseInt(user.id)) );
+        return true;
     },
 }
