@@ -10,7 +10,7 @@ export default {
         console.log("Enviando email delete")
         const {user} = data;
         Mail.sendMail({
-            from:"Me <alansilva.200226@gmail.com>",
+            from:"Me <emailDeALguem@gmail.com>",
             to: `${user.name} <${user.email}>`,
             subject:'deleted account',
             html:` Sua conta foi deletada`

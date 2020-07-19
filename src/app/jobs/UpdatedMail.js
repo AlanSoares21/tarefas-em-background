@@ -10,7 +10,7 @@ export default {
         console.log("Enviando email update");
         const {user} = data;
         Mail.sendMail({
-            from:"Me <alansilva.200226@gmail.com>",
+            from:"Me <emailDeALguem@gmail.com>",
             to: `${user.name} <${user.email}>`,
             subject:'updated account',
             html:` Ola <i>${user.name}</i> seus dados foram atualizados com sucesso`
